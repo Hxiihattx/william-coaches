@@ -510,7 +510,6 @@
       background: rgba(255, 255, 255, 0.97);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--color-border);
       padding: 20px 24px 32px;
       overflow: hidden;
       max-height: 0;
@@ -519,6 +518,7 @@
 
     .nav__mobile.open {
       max-height: 500px;
+      border-bottom: 1px solid var(--color-border);
     }
 
     .nav__mobile a {
@@ -2167,6 +2167,157 @@
       .footer__bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
     }
 
+    /* ─── QUOTE WIZARD ─────────────────────────────────────────────────────── */
+    .quote__indicator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 36px;
+    }
+
+    .quote__ind-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .quote__ind-num {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      background: #E5E7EB;
+      color: var(--color-text-muted);
+      transition: background var(--transition), color var(--transition);
+    }
+
+    .quote__ind-step.active .quote__ind-num {
+      background: var(--color-accent);
+      color: #fff;
+    }
+
+    .quote__ind-step.done .quote__ind-num {
+      background: var(--color-accent-soft);
+      color: var(--color-accent);
+    }
+
+    .quote__ind-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-text-muted);
+      transition: color var(--transition);
+      white-space: nowrap;
+    }
+
+    .quote__ind-step.active .quote__ind-label,
+    .quote__ind-step.done .quote__ind-label {
+      color: var(--color-accent);
+    }
+
+    .quote__ind-line {
+      flex: 1;
+      height: 2px;
+      background: #E5E7EB;
+      margin: 0 12px;
+      margin-bottom: 22px;
+      min-width: 40px;
+      max-width: 80px;
+      transition: background var(--transition);
+    }
+
+    .quote__ind-line.done {
+      background: var(--color-accent-soft);
+    }
+
+    .quote__nav {
+      display: flex;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .quote__btn-back {
+      flex: 0 0 auto;
+      height: 52px;
+      padding: 0 24px;
+      background: none;
+      border: 1px solid #E5E7EB;
+      border-radius: var(--radius-pill);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--color-text-secondary);
+      cursor: pointer;
+      transition: border-color var(--transition), color var(--transition);
+    }
+
+    .quote__btn-back:hover {
+      border-color: var(--color-accent-light);
+      color: var(--color-accent);
+    }
+
+    .quote__btn-next {
+      flex: 1;
+      height: 52px;
+      background: linear-gradient(135deg, #5B21B6, #7C3AED);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: var(--radius-pill);
+      border: none;
+      cursor: pointer;
+      box-shadow: var(--shadow-button);
+      transition: transform var(--transition), box-shadow var(--transition), filter var(--transition);
+    }
+
+    .quote__btn-next:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-button-hover);
+      filter: brightness(1.05);
+    }
+
+    .quote__btn-next:active { transform: translateY(0); box-shadow: var(--shadow-button); }
+    .quote__btn-next:disabled { opacity: 0.7; cursor: default; transform: none; filter: none; }
+
+    .quote__btn-next:focus-visible,
+    .quote__btn-back:focus-visible {
+      outline: 3px solid rgba(124, 58, 237, 0.45);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 767px) {
+      .quote__ind-line { min-width: 24px; max-width: 48px; margin: 0 6px; margin-bottom: 22px; }
+      .quote__btn-back { height: 46px; padding: 0 18px; font-size: 14px; }
+      .quote__btn-next { height: 46px; font-size: 14px; }
+    }
+
+    /* ─── MOBILE FIXES ──────────────────────────────────────────────────────── */
+    /* Sections use `padding: 72px 20px` + `.container { padding: 0 20px }` = 40px
+       each side on mobile. Zero out the section-level horizontal padding so only
+       the container's 20px applies, matching the hero's single 20px. */
+    @media (max-width: 767px) {
+      .services, .fleet, .why, .about, .how,
+      .testimonials, .coverage, .faq, .quote {
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      /* Remove the desktop max-width constraint on step descriptions so they
+         fill the full single-column width on mobile. */
+      .how__step-desc { max-width: none; }
+
+      /* Centre the city chip pills when they wrap on small screens. */
+      .coverage__chips { justify-content: center; }
+    }
+
   </style>
 </head>
 
@@ -3092,24 +3243,28 @@
         </div>
         <p class="quote__sub fade-up">No obligation. We respond within 2 hours.</p>
 
-        <div class="quote__form-wrap fade-up" role="region" aria-label="Quote request form">
+        <div class="quote__form-wrap fade-up" role="region" aria-label="Quote request form" aria-live="polite">
 
-          <div class="quote__row">
-            <div class="quote__field">
-              <label for="q-name">Full Name</label>
-              <input type="text" id="q-name" placeholder="Your full name" autocomplete="name" />
+          <!-- ── Step Indicator ── -->
+          <div class="quote__indicator" aria-label="Form progress">
+            <div class="quote__ind-step active" data-ind="1">
+              <div class="quote__ind-num" aria-hidden="true">1</div>
+              <span class="quote__ind-label">Journey</span>
             </div>
-            <div class="quote__field">
-              <label for="q-email">Email Address</label>
-              <input type="email" id="q-email" placeholder="you@example.com" autocomplete="email" />
+            <div class="quote__ind-line" id="indLine1" aria-hidden="true"></div>
+            <div class="quote__ind-step" data-ind="2">
+              <div class="quote__ind-num" aria-hidden="true">2</div>
+              <span class="quote__ind-label">Your Details</span>
+            </div>
+            <div class="quote__ind-line" id="indLine2" aria-hidden="true"></div>
+            <div class="quote__ind-step" data-ind="3">
+              <div class="quote__ind-num" aria-hidden="true">3</div>
+              <span class="quote__ind-label">Notes</span>
             </div>
           </div>
 
-          <div class="quote__row">
-            <div class="quote__field">
-              <label for="q-phone">Phone Number</label>
-              <input type="tel" id="q-phone" placeholder="+44 7700 900000" autocomplete="tel" />
-            </div>
+          <!-- ── Step 1: Journey ── -->
+          <div class="quote__step-panel" id="quoteStep1">
             <div class="quote__field">
               <label for="q-journey">Journey Type</label>
               <select id="q-journey">
@@ -3122,43 +3277,62 @@
                 <option value="other">Other</option>
               </select>
             </div>
+            <div class="quote__row">
+              <div class="quote__field">
+                <label for="q-pickup">Pickup Location</label>
+                <input type="text" id="q-pickup" placeholder="e.g. Central London" />
+              </div>
+              <div class="quote__field">
+                <label for="q-destination">Destination</label>
+                <input type="text" id="q-destination" placeholder="e.g. Heathrow Airport" />
+              </div>
+            </div>
+            <div class="quote__row">
+              <div class="quote__field">
+                <label for="q-date">Travel Date</label>
+                <input type="date" id="q-date" />
+              </div>
+              <div class="quote__field">
+                <label for="q-passengers">Passengers</label>
+                <input type="number" id="q-passengers" placeholder="e.g. 24" min="1" max="72" />
+              </div>
+            </div>
+            <div class="quote__nav">
+              <button type="button" class="quote__btn-next" onclick="wizardNext(1)">Next — Your Details →</button>
+            </div>
           </div>
 
-          <div class="quote__row">
+          <!-- ── Step 2: Your Details ── -->
+          <div class="quote__step-panel" id="quoteStep2" hidden>
             <div class="quote__field">
-              <label for="q-pickup">Pickup Location</label>
-              <input type="text" id="q-pickup" placeholder="e.g. Central London" />
+              <label for="q-name">Full Name</label>
+              <input type="text" id="q-name" placeholder="Your full name" autocomplete="name" />
             </div>
             <div class="quote__field">
-              <label for="q-destination">Destination</label>
-              <input type="text" id="q-destination" placeholder="e.g. Heathrow Airport" />
-            </div>
-          </div>
-
-          <div class="quote__row">
-            <div class="quote__field">
-              <label for="q-date">Travel Date</label>
-              <input type="date" id="q-date" />
+              <label for="q-email">Email Address</label>
+              <input type="email" id="q-email" placeholder="you@example.com" autocomplete="email" />
             </div>
             <div class="quote__field">
-              <label for="q-passengers">Number of Passengers</label>
-              <input type="number" id="q-passengers" placeholder="e.g. 24" min="1" max="60" />
+              <label for="q-phone">Phone Number</label>
+              <input type="tel" id="q-phone" placeholder="+44 7700 900000" autocomplete="tel" />
+            </div>
+            <div class="quote__nav">
+              <button type="button" class="quote__btn-back" onclick="wizardBack(2)">← Back</button>
+              <button type="button" class="quote__btn-next" onclick="wizardNext(2)">Next — Notes →</button>
             </div>
           </div>
 
-          <div class="quote__field">
-            <label for="q-notes">Additional Notes</label>
-            <textarea id="q-notes" rows="4" placeholder="Any special requirements, accessibility needs, or additional information..."></textarea>
+          <!-- ── Step 3: Notes + Submit ── -->
+          <div class="quote__step-panel" id="quoteStep3" hidden>
+            <div class="quote__field">
+              <label for="q-notes">Additional Notes <span style="font-weight:400;color:var(--color-text-muted)">(optional)</span></label>
+              <textarea id="q-notes" rows="4" placeholder="Any special requirements, accessibility needs, or additional information..."></textarea>
+            </div>
+            <div class="quote__nav">
+              <button type="button" class="quote__btn-back" onclick="wizardBack(3)">← Back</button>
+              <button type="button" class="quote__btn-next" id="quoteBtn" onclick="handleQuoteSubmit()">Send My Request</button>
+            </div>
           </div>
-
-          <button
-            type="button"
-            class="quote__submit"
-            id="quoteBtn"
-            onclick="handleQuoteSubmit()"
-          >
-            Send My Request
-          </button>
 
         </div>
       </div>
@@ -3436,12 +3610,32 @@
       fadeEls.forEach(el => observer.observe(el));
     }
 
-    // ── Quote form handler ────────────────────────────────────────
-    function handleQuoteSubmit() {
-      const required = ['q-name', 'q-email', 'q-pickup', 'q-destination'];
-      let valid = true;
+    // ── Quote wizard ──────────────────────────────────────────────
+    function wizardGoTo(step) {
+      for (let i = 1; i <= 3; i++) {
+        const panel = document.getElementById('quoteStep' + i);
+        if (panel) panel.hidden = (i !== step);
+      }
+      document.querySelectorAll('.quote__ind-step').forEach(el => {
+        const s = parseInt(el.dataset.ind);
+        el.classList.toggle('active', s === step);
+        el.classList.toggle('done', s < step);
+      });
+      const line1 = document.getElementById('indLine1');
+      const line2 = document.getElementById('indLine2');
+      if (line1) line1.classList.toggle('done', step > 1);
+      if (line2) line2.classList.toggle('done', step > 2);
+    }
 
-      required.forEach(id => {
+    function wizardNext(fromStep) {
+      const validations = {
+        1: ['q-journey', 'q-pickup', 'q-destination', 'q-date', 'q-passengers'],
+        2: ['q-name', 'q-email'],
+        3: []
+      };
+      const fields = validations[fromStep] || [];
+      let valid = true;
+      fields.forEach(id => {
         const el = document.getElementById(id);
         if (!el) return;
         el.classList.remove('invalid');
@@ -3450,13 +3644,20 @@
           valid = false;
         }
       });
-
       if (!valid) {
-        const first = document.querySelector('.quote__field input.invalid');
+        const panel = document.getElementById('quoteStep' + fromStep);
+        const first = panel && panel.querySelector('.invalid');
         if (first) first.focus();
         return;
       }
+      wizardGoTo(fromStep + 1);
+    }
 
+    function wizardBack(fromStep) {
+      wizardGoTo(fromStep - 1);
+    }
+
+    function handleQuoteSubmit() {
       const btn = document.getElementById('quoteBtn');
       btn.textContent = '✓ Request Sent — We\'ll be in touch within 2 hours';
       btn.style.background = 'linear-gradient(135deg, #059669, #10B981)';

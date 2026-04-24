@@ -500,11 +500,13 @@
       transform: translateY(-7px) rotate(-45deg);
     }
 
-    /* Mobile drawer */
+    /* Mobile drawer — position: absolute so it is relative to the fixed .nav
+       parent, not the viewport. (backdrop-filter on .nav creates a containing
+       block that breaks position:fixed on children, causing a 44px gap.) */
     .nav__mobile {
       display: none;
-      position: fixed;
-      top: calc(44px + 68px);
+      position: absolute;
+      top: 68px;
       left: 0;
       right: 0;
       background: rgba(255, 255, 255, 0.97);
@@ -513,12 +515,19 @@
       padding: 20px 24px 32px;
       overflow: hidden;
       max-height: 0;
-      transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      visibility: hidden;
+      transition:
+        max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+        visibility 0s linear 0.35s;
     }
 
     .nav__mobile.open {
       max-height: 500px;
       border-bottom: 1px solid var(--color-border);
+      visibility: visible;
+      transition:
+        max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+        visibility 0s linear 0s;
     }
 
     .nav__mobile a {

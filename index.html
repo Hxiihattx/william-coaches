@@ -1074,6 +1074,334 @@
       .fleet-card__seats { font-size: 36px; }
     }
 
+
+    /* ─── WHY CHOOSE US ─────────────────────────────────────────────────────── */
+    .why {
+      padding: var(--section-padding);
+      background: var(--color-surface-2);
+    }
+
+    .why__header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .why__header h2 { margin-top: 8px; }
+
+    .why__stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: #fff;
+      margin-bottom: 72px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .why__stat {
+      padding: 40px 24px;
+      text-align: center;
+      border-right: 1px solid var(--color-border);
+    }
+
+    .why__stat:last-child { border-right: none; }
+
+    .why__stat-number {
+      display: block;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1;
+      background: linear-gradient(135deg, #5B21B6, #7C3AED);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+    }
+
+    .why__stat-label {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+      line-height: 1.4;
+    }
+
+    .why__points {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .why__point {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: #fff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .why__point-icon {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: var(--color-accent-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .why__point-icon svg {
+      width: 22px;
+      height: 22px;
+      color: var(--color-accent);
+    }
+
+    .why__point-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      margin-bottom: 4px;
+      line-height: 1.35;
+    }
+
+    .why__point-desc {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 1023px) {
+      .why__stats { grid-template-columns: repeat(2, 1fr); }
+      .why__stat:nth-child(2n) { border-right: none; }
+      .why__stat:nth-child(n+3) { border-top: 1px solid var(--color-border); }
+      .why__points { grid-template-columns: 1fr; gap: 16px; }
+    }
+
+    @media (max-width: 767px) {
+      .why { padding: var(--section-padding-mobile); }
+      .why__header { margin-bottom: 40px; }
+      .why__stats { margin-bottom: 40px; }
+      .why__stat { padding: 28px 16px; }
+      .why__stat-number { font-size: 36px; }
+      .why__point { padding: 20px; gap: 14px; }
+      .why__point-icon { width: 42px; height: 42px; border-radius: 12px; }
+    }
+
+    /* ─── HOW IT WORKS ──────────────────────────────────────────────────────── */
+    .how {
+      padding: var(--section-padding);
+      background: var(--color-bg);
+    }
+
+    .how__header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+
+    .how__header h2 { margin-top: 8px; }
+
+    .how__steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      position: relative;
+    }
+
+    /* Dashed connector — hidden under the step circles by z-index */
+    .how__steps::before {
+      content: '';
+      position: absolute;
+      top: 40px;
+      left: calc(100% / 6);
+      right: calc(100% / 6);
+      border-top: 2px dashed #DDD6FE;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .how__step {
+      text-align: center;
+      padding: 0 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .how__step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--color-accent-soft);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--color-accent);
+      margin: 0 auto 24px;
+    }
+
+    .how__step-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: #fff;
+      border: 1px solid var(--color-border);
+      box-shadow: var(--shadow-card);
+      margin: 0 auto 20px;
+    }
+
+    .how__step-icon svg {
+      width: 20px;
+      height: 20px;
+      color: var(--color-accent);
+    }
+
+    .how__step-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .how__step-desc {
+      font-size: 15px;
+      color: var(--color-text-secondary);
+      line-height: 1.65;
+      max-width: 240px;
+      margin: 0 auto;
+    }
+
+    .how__steps .how__step:not(.visible):nth-child(1) { transition-delay: 0ms; }
+    .how__steps .how__step:not(.visible):nth-child(2) { transition-delay: 120ms; }
+    .how__steps .how__step:not(.visible):nth-child(3) { transition-delay: 240ms; }
+
+    @media (max-width: 767px) {
+      .how { padding: var(--section-padding-mobile); }
+      .how__header { margin-bottom: 48px; }
+      .how__steps { grid-template-columns: 1fr; gap: 48px; }
+      .how__steps::before { display: none; }
+      .how__step { padding: 0 8px; }
+    }
+
+    /* ─── TESTIMONIALS ──────────────────────────────────────────────────────── */
+    .testimonials {
+      padding: var(--section-padding);
+      background: var(--color-surface);
+    }
+
+    .testimonials__header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .testimonials__header h2 { margin-top: 8px; }
+
+    .testimonials__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .t-card {
+      background: #fff;
+      border: 1px solid var(--color-border);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: var(--shadow-card);
+      transition: transform var(--transition), box-shadow var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .t-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-card-hover);
+    }
+
+    .t-card__stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 20px;
+    }
+
+    .t-card__star {
+      color: var(--color-gold);
+      font-size: 15px;
+      line-height: 1;
+    }
+
+    .t-card__quote {
+      font-size: 16px;
+      font-style: italic;
+      color: #374151;
+      line-height: 1.75;
+      flex: 1;
+      margin-bottom: 28px;
+    }
+
+    .t-card__author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .t-card__avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      background: var(--color-accent-soft);
+    }
+
+    .t-card__name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      line-height: 1.3;
+    }
+
+    .t-card__role {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      margin-top: 2px;
+      line-height: 1.4;
+    }
+
+    .testimonials__grid .t-card:not(.visible):nth-child(1) { transition-delay: 0ms; }
+    .testimonials__grid .t-card:not(.visible):nth-child(2) { transition-delay: 80ms; }
+    .testimonials__grid .t-card:not(.visible):nth-child(3) { transition-delay: 160ms; }
+
+    @media (max-width: 1023px) {
+      .testimonials__grid { grid-template-columns: repeat(2, 1fr); }
+      .t-card:last-child {
+        grid-column: span 2;
+        max-width: 540px;
+        margin: 0 auto;
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .testimonials { padding: var(--section-padding-mobile); }
+      .testimonials__header { margin-bottom: 40px; }
+      .testimonials__grid { grid-template-columns: 1fr; gap: 16px; }
+      .t-card:last-child { grid-column: span 1; max-width: none; }
+      .t-card__quote { font-size: 15px; }
+    }
+
   </style>
 </head>
 
@@ -1477,6 +1805,261 @@
       </div>
     </section>
 
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         WHY CHOOSE US
+    ═══════════════════════════════════════════════════════════════ -->
+    <section class="why" id="about" aria-labelledby="why-heading">
+      <div class="container">
+
+        <div class="why__header">
+          <span class="eyebrow fade-up">Why William Coaches</span>
+          <h2 class="fade-up" id="why-heading">Trusted by Hundreds Across the UK</h2>
+        </div>
+
+        <!-- Stats row -->
+        <div class="why__stats fade-up" role="list" aria-label="Company statistics">
+          <div class="why__stat" role="listitem">
+            <span
+              class="why__stat-number"
+              data-count="500"
+              data-suffix="+"
+              aria-label="Over 500 happy clients"
+            >500+</span>
+            <span class="why__stat-label">Happy Clients</span>
+          </div>
+          <div class="why__stat" role="listitem">
+            <span
+              class="why__stat-number"
+              data-count="10"
+              data-suffix="+"
+              aria-label="Over 10 years experience"
+            >10+</span>
+            <span class="why__stat-label">Years Experience</span>
+          </div>
+          <div class="why__stat" role="listitem">
+            <span
+              class="why__stat-number"
+              data-count="50"
+              data-suffix="+"
+              aria-label="Over 50 vehicles"
+            >50+</span>
+            <span class="why__stat-label">Vehicles in Fleet</span>
+          </div>
+          <div class="why__stat" role="listitem">
+            <span
+              class="why__stat-number"
+              data-count="4.9"
+              data-decimals="1"
+              data-suffix="★"
+              aria-label="4.9 star average rating"
+            >4.9★</span>
+            <span class="why__stat-label">Average Rating</span>
+          </div>
+        </div>
+
+        <!-- Trust points -->
+        <div class="why__points">
+
+          <div class="why__point fade-up">
+            <div class="why__point-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <div class="why__point-text">
+              <p class="why__point-title">Fully Licensed &amp; Insured</p>
+              <p class="why__point-desc">All vehicles hold full public liability insurance and comply with UK transport regulations.</p>
+            </div>
+          </div>
+
+          <div class="why__point fade-up">
+            <div class="why__point-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+            </div>
+            <div class="why__point-text">
+              <p class="why__point-title">DBS-Checked Professional Drivers</p>
+              <p class="why__point-desc">Every driver holds an enhanced DBS certificate and a full Category D licence.</p>
+            </div>
+          </div>
+
+          <div class="why__point fade-up">
+            <div class="why__point-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div class="why__point-text">
+              <p class="why__point-title">Real-Time GPS Tracking</p>
+              <p class="why__point-desc">Monitor your journey live. You'll always know exactly where your coach is.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         HOW IT WORKS
+    ═══════════════════════════════════════════════════════════════ -->
+    <section class="how" aria-labelledby="how-heading">
+      <div class="container">
+
+        <div class="how__header">
+          <span class="eyebrow fade-up">Simple Process</span>
+          <h2 class="fade-up" id="how-heading">Book Your Coach in Minutes</h2>
+        </div>
+
+        <div class="how__steps">
+
+          <div class="how__step fade-up">
+            <div class="how__step-num" aria-hidden="true">01</div>
+            <div class="how__step-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+                <polyline points="10 9 9 9 8 9"/>
+              </svg>
+            </div>
+            <h3 class="how__step-title">Request a Quote</h3>
+            <p class="how__step-desc">Fill our quick form with your journey details — takes under two minutes.</p>
+          </div>
+
+          <div class="how__step fade-up">
+            <div class="how__step-num" aria-hidden="true">02</div>
+            <div class="how__step-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <h3 class="how__step-title">Get Confirmed</h3>
+            <p class="how__step-desc">Receive your bespoke quote within 2 hours. We handle all the details for you.</p>
+          </div>
+
+          <div class="how__step fade-up">
+            <div class="how__step-num" aria-hidden="true">03</div>
+            <div class="how__step-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="1" y="3" width="15" height="13" rx="2"/>
+                <path d="M16 8h4l3 3v5h-7V8z"/>
+                <circle cx="5.5" cy="18.5" r="2.5"/>
+                <circle cx="18.5" cy="18.5" r="2.5"/>
+              </svg>
+            </div>
+            <h3 class="how__step-title">Travel in Comfort</h3>
+            <p class="how__step-desc">Your driver arrives on time, every time. Sit back and enjoy the journey.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         TESTIMONIALS
+    ═══════════════════════════════════════════════════════════════ -->
+    <section class="testimonials" aria-labelledby="testimonials-heading">
+      <div class="container">
+
+        <div class="testimonials__header">
+          <span class="eyebrow fade-up">Client Stories</span>
+          <h2 class="fade-up" id="testimonials-heading">What Our Clients Say</h2>
+        </div>
+
+        <div class="testimonials__grid">
+
+          <article class="t-card fade-up">
+            <div class="t-card__stars" aria-label="5 out of 5 stars">
+              <span class="t-card__star" aria-hidden="true">★</span>
+              <span class="t-card__star" aria-hidden="true">★</span>
+              <span class="t-card__star" aria-hidden="true">★</span>
+              <span class="t-card__star" aria-hidden="true">★</span>
+              <span class="t-card__star" aria-hidden="true">★</span>
+            </div>
+            <blockquote class="t-card__quote">
+              "William Coaches handled our entire company away-day. 47 staff, seamless logistics, impeccable service from start to finish. We won't use anyone else."
+            </blockquote>
+            <div class="t-card__author">
+              <img
+                class="t-card__avatar"
+                src="https://ui-avatars.com/api/?name=Sarah+Mitchell&background=EDE9FE&color=5B21B6&size=56&bold=true"
+                alt="Sarah Mitchell"
+                width="48"
+                height="48"
+                loading="lazy"
+              />
+              <div>
+                <p class="t-card__name">Sarah Mitchell</p>
+                <p class="t-card__role">Operations Director, KPMG</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="t-card fade-up">
+            <div class="t-card__stars" aria-label="5 out of 5 stars">
+              <span class="t-card__star" aria-hidden="true">★</span>
+              <span class="t-card__star" aria-hidden="true">★</span>
+              <span class="t-card__star" aria-hidden="true">★</span>
+              <span class="t-card__star" aria-hidden="true">★</span>
+              <span class="t-card__star" aria-hidden="true">★</span>
+            </div>
+            <blockquote class="t-card__quote">
+              "Our wedding guests were blown away by the coach. On time, immaculate, and the driver was absolutely wonderful. Made the whole day even more special."
+            </blockquote>
+            <div class="t-card__author">
+              <img
+                class="t-card__avatar"
+                src="https://ui-avatars.com/api/?name=Priya+Sharma&background=EDE9FE&color=5B21B6&size=56&bold=true"
+                alt="James and Priya Sharma"
+                width="48"
+                height="48"
+                loading="lazy"
+              />
+              <div>
+                <p class="t-card__name">James &amp; Priya Sharma</p>
+                <p class="t-card__role">Wedding Clients, Surrey</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="t-card fade-up">
+            <div class="t-card__stars" aria-label="5 out of 5 stars">
+              <span class="t-card__star" aria-hidden="true">★</span>
+              <span class="t-card__star" aria-hidden="true">★</span>
+              <span class="t-card__star" aria-hidden="true">★</span>
+              <span class="t-card__star" aria-hidden="true">★</span>
+              <span class="t-card__star" aria-hidden="true">★</span>
+            </div>
+            <blockquote class="t-card__quote">
+              "Best airport transfer service in London, full stop. Used them six times this year. Never once been late. Absolutely reliable — I recommend them to everyone."
+            </blockquote>
+            <div class="t-card__author">
+              <img
+                class="t-card__avatar"
+                src="https://ui-avatars.com/api/?name=David+Chen&background=EDE9FE&color=5B21B6&size=56&bold=true"
+                alt="David Chen"
+                width="48"
+                height="48"
+                loading="lazy"
+              />
+              <div>
+                <p class="t-card__name">David Chen</p>
+                <p class="t-card__role">Frequent Traveller, London</p>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
   </main>
 
 
@@ -1537,6 +2120,31 @@
       }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
       fadeEls.forEach(el => observer.observe(el));
+    }
+
+    // ── Stats counter animation ───────────────────────────────────
+    const counters = document.querySelectorAll('[data-count]');
+    if (counters.length > 0) {
+      const ctrObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
+          const target = parseFloat(el.dataset.count);
+          const suffix = el.dataset.suffix || '';
+          const decimals = el.dataset.decimals ? parseInt(el.dataset.decimals) : 0;
+          const duration = 1600;
+          const startTime = performance.now();
+          const tick = (now) => {
+            const progress = Math.min((now - startTime) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = (eased * target).toFixed(decimals) + suffix;
+            if (progress < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+          ctrObserver.unobserve(el);
+        });
+      }, { threshold: 0.6 });
+      counters.forEach(el => ctrObserver.observe(el));
     }
   </script>
 

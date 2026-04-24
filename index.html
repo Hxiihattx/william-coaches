@@ -1402,6 +1402,456 @@
       .t-card__quote { font-size: 15px; }
     }
 
+
+    /* Scroll offset for sticky nav — applied to all anchor targets */
+    .services, .fleet, .why, .how, .testimonials,
+    .coverage, .quote, .cta-banner, footer { scroll-margin-top: 80px; }
+
+    /* ─── COVERAGE ──────────────────────────────────────────────────────────── */
+    .coverage {
+      padding: var(--section-padding);
+      background: var(--color-bg);
+    }
+
+    .coverage__header {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .coverage__header h2 { margin-top: 8px; }
+
+    .coverage__sub {
+      text-align: center;
+      font-size: 17px;
+      color: var(--color-text-secondary);
+      max-width: 520px;
+      margin: 0 auto 64px;
+      line-height: 1.75;
+    }
+
+    .coverage__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .coverage__cities-label {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      margin-bottom: 20px;
+    }
+
+    .coverage__chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .coverage__chip {
+      display: inline-block;
+      background: #fff;
+      border: 1px solid #E5E7EB;
+      border-radius: var(--radius-pill);
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+      transition: background var(--transition), border-color var(--transition), color var(--transition);
+    }
+
+    .coverage__chip:hover {
+      background: var(--color-accent-soft);
+      border-color: var(--color-accent-soft);
+      color: var(--color-accent);
+    }
+
+    .coverage__note {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      line-height: 1.65;
+    }
+
+    .coverage__image-wrap {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.10);
+    }
+
+    .coverage__image-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(91,33,182,0.08), transparent 60%);
+      pointer-events: none;
+    }
+
+    .coverage__image {
+      width: 100%;
+      height: 440px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .coverage__image-wrap:hover .coverage__image { transform: scale(1.03); }
+
+    @media (max-width: 1023px) {
+      .coverage__grid { grid-template-columns: 1fr; gap: 48px; }
+      .coverage__image { height: 320px; }
+    }
+
+    @media (max-width: 767px) {
+      .coverage { padding: var(--section-padding-mobile); }
+      .coverage__sub { margin-bottom: 40px; font-size: 15px; }
+      .coverage__image { height: 240px; }
+    }
+
+    /* ─── QUOTE FORM ─────────────────────────────────────────────────────────── */
+    .quote {
+      padding: var(--section-padding);
+      background: var(--color-surface);
+    }
+
+    .quote__header {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .quote__header h2 { margin-top: 8px; }
+
+    .quote__sub {
+      text-align: center;
+      font-size: 17px;
+      color: var(--color-text-secondary);
+      margin-bottom: 48px;
+      line-height: 1.7;
+    }
+
+    .quote__form-wrap {
+      max-width: 640px;
+      margin: 0 auto;
+      background: #fff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .quote__row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .quote__field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .quote__field label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-text-primary);
+    }
+
+    .quote__field input,
+    .quote__field select,
+    .quote__field textarea {
+      width: 100%;
+      background: #fff;
+      border: 1px solid #E5E7EB;
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      font-size: 16px;
+      font-family: 'DM Sans', sans-serif;
+      color: var(--color-text-primary);
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+      -webkit-appearance: none;
+    }
+
+    .quote__field input::placeholder,
+    .quote__field textarea::placeholder { color: var(--color-text-muted); }
+
+    .quote__field input:focus,
+    .quote__field select:focus,
+    .quote__field textarea:focus {
+      border-color: var(--color-accent-light);
+      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.12);
+    }
+
+    .quote__field input.invalid,
+    .quote__field select.invalid { border-color: #EF4444; }
+
+    .quote__field select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 42px;
+      cursor: pointer;
+    }
+
+    .quote__field textarea {
+      resize: vertical;
+      min-height: 112px;
+      line-height: 1.6;
+    }
+
+    .quote__submit {
+      width: 100%;
+      height: 52px;
+      margin-top: 8px;
+      background: linear-gradient(135deg, #5B21B6, #7C3AED);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: var(--radius-pill);
+      border: none;
+      cursor: pointer;
+      box-shadow: var(--shadow-button);
+      transition: transform var(--transition), box-shadow var(--transition), filter var(--transition);
+    }
+
+    .quote__submit:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-button-hover);
+      filter: brightness(1.05);
+    }
+
+    .quote__submit:active { transform: translateY(0); box-shadow: var(--shadow-button); }
+    .quote__submit:disabled { cursor: default; }
+
+    .quote__submit:focus-visible {
+      outline: 3px solid rgba(124, 58, 237, 0.45);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 767px) {
+      .quote { padding: var(--section-padding-mobile); }
+      .quote__form-wrap { padding: 28px 20px; }
+      .quote__row { grid-template-columns: 1fr; gap: 0; }
+      .quote__sub { font-size: 15px; margin-bottom: 32px; }
+    }
+
+    /* ─── FINAL CTA BANNER ───────────────────────────────────────────────────── */
+    .cta-banner {
+      padding: var(--section-padding);
+      background: linear-gradient(135deg, #FAF5FF 0%, #EDE9FE 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-banner::before,
+    .cta-banner::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .cta-banner::before {
+      width: 480px;
+      height: 480px;
+      background: radial-gradient(circle, rgba(124,58,237,0.14), transparent 70%);
+      top: -140px;
+      left: -100px;
+    }
+
+    .cta-banner::after {
+      width: 360px;
+      height: 360px;
+      background: radial-gradient(circle, rgba(91,33,182,0.10), transparent 70%);
+      bottom: -100px;
+      right: -60px;
+    }
+
+    .cta-banner__inner {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .cta-banner__heading {
+      margin-top: 12px;
+      margin-bottom: 16px;
+    }
+
+    .cta-banner__sub {
+      font-size: 18px;
+      color: var(--color-text-secondary);
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+
+    .cta-banner__btns {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 767px) {
+      .cta-banner { padding: var(--section-padding-mobile); }
+      .cta-banner__sub { font-size: 16px; margin-bottom: 32px; }
+      .cta-banner__btns { flex-direction: column; }
+      .cta-banner__btns .btn-primary,
+      .cta-banner__btns .btn-secondary { width: 100%; justify-content: center; }
+      .cta-banner::before { width: 280px; height: 280px; }
+      .cta-banner::after { width: 200px; height: 200px; }
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────────────────────────────── */
+    .footer {
+      background: var(--color-bg);
+      border-top: 1px solid var(--color-border);
+      padding: 72px 24px 0;
+    }
+
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1.4fr;
+      gap: 48px;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding-bottom: 56px;
+    }
+
+    .footer__brand-logo {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      letter-spacing: -0.02em;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    .footer__brand-logo span { color: var(--color-accent); }
+
+    .footer__tagline {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      line-height: 1.65;
+      max-width: 220px;
+      margin-bottom: 24px;
+    }
+
+    .footer__socials {
+      display: flex;
+      gap: 10px;
+    }
+
+    .footer__social {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      border: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      transition: color var(--transition), border-color var(--transition), background var(--transition);
+    }
+
+    .footer__social:hover {
+      color: var(--color-accent);
+      border-color: var(--color-accent-soft);
+      background: var(--color-accent-soft);
+    }
+
+    .footer__social svg { width: 16px; height: 16px; }
+
+    .footer__col-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 16px;
+    }
+
+    .footer__links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer__link {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      transition: color var(--transition);
+      line-height: 1.5;
+    }
+
+    .footer__link:hover { color: var(--color-accent); }
+
+    .footer__contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      line-height: 1.55;
+      margin-bottom: 12px;
+    }
+
+    .footer__contact-item:last-child { margin-bottom: 0; }
+
+    .footer__contact-icon { flex-shrink: 0; font-style: normal; }
+
+    .footer__bottom {
+      border-top: 1px solid var(--color-border);
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer__copy {
+      font-size: 13px;
+      color: var(--color-text-muted);
+    }
+
+    .footer__legal {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer__legal a {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      transition: color var(--transition);
+    }
+
+    .footer__legal a:hover { color: var(--color-accent); }
+    .footer__legal a:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; border-radius: 3px; }
+
+    @media (max-width: 1023px) {
+      .footer__grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+    }
+
+    @media (max-width: 767px) {
+      .footer { padding: 56px 20px 0; }
+      .footer__grid { grid-template-columns: 1fr; gap: 36px; padding-bottom: 40px; }
+      .footer__bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
+    }
+
   </style>
 </head>
 
@@ -2060,7 +2510,254 @@
       </div>
     </section>
 
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         COVERAGE AREA
+    ═══════════════════════════════════════════════════════════════ -->
+    <section class="coverage" aria-labelledby="coverage-heading">
+      <div class="container">
+
+        <div class="coverage__header fade-up">
+          <span class="eyebrow">Service Area</span>
+          <h2 id="coverage-heading">We Cover All of the UK</h2>
+        </div>
+        <p class="coverage__sub fade-up">Based in London, operating nationwide — from Edinburgh to Cornwall.</p>
+
+        <div class="coverage__grid">
+
+          <div class="fade-up">
+            <p class="coverage__cities-label">Cities We Serve</p>
+            <div class="coverage__chips" role="list" aria-label="Cities covered">
+              <span class="coverage__chip" role="listitem">London</span>
+              <span class="coverage__chip" role="listitem">Manchester</span>
+              <span class="coverage__chip" role="listitem">Birmingham</span>
+              <span class="coverage__chip" role="listitem">Leeds</span>
+              <span class="coverage__chip" role="listitem">Edinburgh</span>
+              <span class="coverage__chip" role="listitem">Bristol</span>
+              <span class="coverage__chip" role="listitem">Cardiff</span>
+              <span class="coverage__chip" role="listitem">Glasgow</span>
+              <span class="coverage__chip" role="listitem">Liverpool</span>
+              <span class="coverage__chip" role="listitem">Sheffield</span>
+              <span class="coverage__chip" role="listitem">Oxford</span>
+              <span class="coverage__chip" role="listitem">Cambridge</span>
+            </div>
+            <p class="coverage__note">Can't see your city? We travel anywhere in the UK — get in touch and we'll arrange everything.</p>
+          </div>
+
+          <div class="coverage__image-wrap fade-up">
+            <img
+              class="coverage__image"
+              src="https://images.unsplash.com/photo-1486299267070-83823f5448dd?w=800&q=80"
+              alt="Aerial view of London at dusk"
+              loading="lazy"
+            />
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         QUOTE FORM
+    ═══════════════════════════════════════════════════════════════ -->
+    <span id="contact" aria-hidden="true" style="display:block;height:0;overflow:hidden;"></span>
+    <section class="quote" id="quote" aria-labelledby="quote-heading">
+      <div class="container">
+
+        <div class="quote__header fade-up">
+          <span class="eyebrow">Free, No Obligation</span>
+          <h2 id="quote-heading">Get Your Free Quote</h2>
+        </div>
+        <p class="quote__sub fade-up">No obligation. We respond within 2 hours.</p>
+
+        <div class="quote__form-wrap fade-up" role="region" aria-label="Quote request form">
+
+          <div class="quote__row">
+            <div class="quote__field">
+              <label for="q-name">Full Name</label>
+              <input type="text" id="q-name" placeholder="Your full name" autocomplete="name" />
+            </div>
+            <div class="quote__field">
+              <label for="q-email">Email Address</label>
+              <input type="email" id="q-email" placeholder="you@example.com" autocomplete="email" />
+            </div>
+          </div>
+
+          <div class="quote__row">
+            <div class="quote__field">
+              <label for="q-phone">Phone Number</label>
+              <input type="tel" id="q-phone" placeholder="+44 7700 900000" autocomplete="tel" />
+            </div>
+            <div class="quote__field">
+              <label for="q-journey">Journey Type</label>
+              <select id="q-journey">
+                <option value="" disabled selected>Select journey type</option>
+                <option value="airport">Airport Transfer</option>
+                <option value="corporate">Corporate Travel</option>
+                <option value="wedding">Wedding Transport</option>
+                <option value="school">School Trip</option>
+                <option value="sports">Sports &amp; Events</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="quote__row">
+            <div class="quote__field">
+              <label for="q-pickup">Pickup Location</label>
+              <input type="text" id="q-pickup" placeholder="e.g. Central London" />
+            </div>
+            <div class="quote__field">
+              <label for="q-destination">Destination</label>
+              <input type="text" id="q-destination" placeholder="e.g. Heathrow Airport" />
+            </div>
+          </div>
+
+          <div class="quote__row">
+            <div class="quote__field">
+              <label for="q-date">Travel Date</label>
+              <input type="date" id="q-date" />
+            </div>
+            <div class="quote__field">
+              <label for="q-passengers">Number of Passengers</label>
+              <input type="number" id="q-passengers" placeholder="e.g. 24" min="1" max="60" />
+            </div>
+          </div>
+
+          <div class="quote__field">
+            <label for="q-notes">Additional Notes</label>
+            <textarea id="q-notes" rows="4" placeholder="Any special requirements, accessibility needs, or additional information..."></textarea>
+          </div>
+
+          <button
+            type="button"
+            class="quote__submit"
+            id="quoteBtn"
+            onclick="handleQuoteSubmit()"
+          >
+            Send My Request
+          </button>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         FINAL CTA BANNER
+    ═══════════════════════════════════════════════════════════════ -->
+    <section class="cta-banner" aria-labelledby="cta-heading">
+      <div class="cta-banner__inner">
+        <span class="eyebrow fade-up">Get Started Today</span>
+        <h2 class="cta-banner__heading fade-up" id="cta-heading">Ready to Book Your Coach?</h2>
+        <p class="cta-banner__sub fade-up">Join 500+ satisfied clients. Get a free, no-obligation quote in minutes.</p>
+        <div class="cta-banner__btns fade-up">
+          <a href="#quote" class="btn-primary">Get a Free Quote</a>
+          <a href="tel:02000000000" class="btn-secondary">Call Us: 020 XXXX XXXX</a>
+        </div>
+      </div>
+    </section>
+
   </main>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+
+    <div class="footer__grid">
+
+      <!-- Brand + social -->
+      <div>
+        <a href="#" class="footer__brand-logo" aria-label="William Coaches — back to top">
+          William <span>Coaches</span>
+        </a>
+        <p class="footer__tagline">London's premier coach hire service. Trusted by hundreds of clients across the UK since 2015.</p>
+        <nav class="footer__socials" aria-label="Social media links">
+          <a href="#" class="footer__social" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </a>
+          <a href="#" class="footer__social" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </a>
+          <a href="#" class="footer__social" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+          <a href="#" class="footer__social" aria-label="X (Twitter)">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Services links -->
+      <div>
+        <p class="footer__col-title">Services</p>
+        <nav class="footer__links" aria-label="Services">
+          <a href="#services" class="footer__link">Airport Transfers</a>
+          <a href="#services" class="footer__link">Corporate Travel</a>
+          <a href="#services" class="footer__link">Wedding Transport</a>
+          <a href="#services" class="footer__link">School Trips</a>
+          <a href="#services" class="footer__link">Sports &amp; Events</a>
+          <a href="#services" class="footer__link">Day Trips &amp; Tours</a>
+        </nav>
+      </div>
+
+      <!-- Company links -->
+      <div>
+        <p class="footer__col-title">Company</p>
+        <nav class="footer__links" aria-label="Company">
+          <a href="#about" class="footer__link">About Us</a>
+          <a href="#fleet" class="footer__link">Our Fleet</a>
+          <a href="#quote" class="footer__link">Get a Quote</a>
+          <a href="#" class="footer__link">Privacy Policy</a>
+          <a href="#" class="footer__link">Terms of Service</a>
+        </nav>
+      </div>
+
+      <!-- Contact info -->
+      <div>
+        <p class="footer__col-title">Contact</p>
+        <address style="font-style:normal;">
+          <div class="footer__contact-item">
+            <span class="footer__contact-icon" aria-hidden="true">📍</span>
+            <span>London, United Kingdom</span>
+          </div>
+          <div class="footer__contact-item">
+            <span class="footer__contact-icon" aria-hidden="true">📞</span>
+            <span><a href="tel:02000000000" class="footer__link" style="display:inline;">020 XXXX XXXX</a></span>
+          </div>
+          <div class="footer__contact-item">
+            <span class="footer__contact-icon" aria-hidden="true">✉️</span>
+            <span><a href="mailto:info@williamcoaches.co.uk" class="footer__link" style="display:inline;">info@williamcoaches.co.uk</a></span>
+          </div>
+        </address>
+      </div>
+
+    </div>
+
+    <div class="footer__bottom">
+      <p class="footer__copy">© 2025 William Coaches. All rights reserved.</p>
+      <div class="footer__legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+
+  </footer>
 
 
   <!-- ═══════════════════════════════════════════════════════════════
@@ -2120,6 +2817,34 @@
       }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
       fadeEls.forEach(el => observer.observe(el));
+    }
+
+    // ── Quote form handler ────────────────────────────────────────
+    function handleQuoteSubmit() {
+      const required = ['q-name', 'q-email', 'q-pickup', 'q-destination'];
+      let valid = true;
+
+      required.forEach(id => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.classList.remove('invalid');
+        if (!el.value.trim()) {
+          el.classList.add('invalid');
+          valid = false;
+        }
+      });
+
+      if (!valid) {
+        const first = document.querySelector('.quote__field input.invalid');
+        if (first) first.focus();
+        return;
+      }
+
+      const btn = document.getElementById('quoteBtn');
+      btn.textContent = '✓ Request Sent — We\'ll be in touch within 2 hours';
+      btn.style.background = 'linear-gradient(135deg, #059669, #10B981)';
+      btn.style.boxShadow = '0 4px 14px rgba(5,150,105,0.30)';
+      btn.disabled = true;
     }
 
     // ── Stats counter animation ───────────────────────────────────

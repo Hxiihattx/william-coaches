@@ -1152,48 +1152,14 @@
 
     .why__header {
       text-align: center;
-      margin-bottom: 64px;
+      margin-bottom: 56px;
     }
 
-    .why__header h2 { margin-top: 8px; }
-
-    .why__stats {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      background: #fff;
-      margin-bottom: 72px;
-      box-shadow: var(--shadow-card);
-    }
-
-    .why__stat {
-      padding: 40px 24px;
-      text-align: center;
-      border-right: 1px solid var(--color-border);
-    }
-
-    .why__stat:last-child { border-right: none; }
-
-    .why__stat-number {
-      display: block;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 48px;
-      font-weight: 700;
-      line-height: 1;
-      background: linear-gradient(135deg, #5B21B6, #7C3AED);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 8px;
-    }
-
-    .why__stat-label {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--color-text-secondary);
-      line-height: 1.4;
+    .why__header h2 {
+      margin-top: 8px;
+      max-width: 580px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .why__points {
@@ -1211,13 +1177,19 @@
       border-radius: var(--radius-md);
       padding: 28px;
       box-shadow: var(--shadow-card);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .why__point:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-card-hover);
     }
 
     .why__point-icon {
       flex-shrink: 0;
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
       background: var(--color-accent-soft);
       display: flex;
       align-items: center;
@@ -1225,17 +1197,17 @@
     }
 
     .why__point-icon svg {
-      width: 22px;
-      height: 22px;
+      width: 20px;
+      height: 20px;
       color: var(--color-accent);
     }
 
     .why__point-title {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 600;
       color: var(--color-text-primary);
-      margin-bottom: 4px;
+      margin-bottom: 5px;
       line-height: 1.35;
     }
 
@@ -1245,21 +1217,133 @@
       line-height: 1.6;
     }
 
-    @media (max-width: 1023px) {
-      .why__stats { grid-template-columns: repeat(2, 1fr); }
-      .why__stat:nth-child(2n) { border-right: none; }
-      .why__stat:nth-child(n+3) { border-top: 1px solid var(--color-border); }
-      .why__points { grid-template-columns: 1fr; gap: 16px; }
+    /* Stagger */
+    .why__points .why__point:not(.visible):nth-child(1) { transition-delay: 0ms; }
+    .why__points .why__point:not(.visible):nth-child(2) { transition-delay: 80ms; }
+    .why__points .why__point:not(.visible):nth-child(3) { transition-delay: 160ms; }
+    .why__points .why__point:not(.visible):nth-child(4) { transition-delay: 240ms; }
+    .why__points .why__point:not(.visible):nth-child(5) { transition-delay: 320ms; }
+    .why__points .why__point:not(.visible):nth-child(6) { transition-delay: 400ms; }
+
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .why__points { grid-template-columns: repeat(2, 1fr); gap: 16px; }
     }
 
     @media (max-width: 767px) {
       .why { padding: var(--section-padding-mobile); }
       .why__header { margin-bottom: 40px; }
-      .why__stats { margin-bottom: 40px; }
-      .why__stat { padding: 28px 16px; }
-      .why__stat-number { font-size: 36px; }
+      .why__points { grid-template-columns: 1fr; gap: 14px; }
       .why__point { padding: 20px; gap: 14px; }
-      .why__point-icon { width: 42px; height: 42px; border-radius: 12px; }
+      .why__point-icon { width: 40px; height: 40px; border-radius: 10px; }
+    }
+
+    /* ─── ABOUT SNAPSHOT ─────────────────────────────────────────────────────── */
+    .about {
+      padding: var(--section-padding);
+      background: var(--color-bg);
+    }
+
+    .about__header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .about__header h2 {
+      margin-top: 8px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .about__stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--color-surface);
+      margin-bottom: 56px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .about__stat {
+      padding: 36px 20px;
+      text-align: center;
+      border-right: 1px solid var(--color-border);
+    }
+
+    .about__stat:last-child { border-right: none; }
+
+    .about__stat-number {
+      display: block;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 44px;
+      font-weight: 700;
+      line-height: 1;
+      background: linear-gradient(135deg, #5B21B6, #7C3AED);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 6px;
+    }
+
+    .about__stat-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+      line-height: 1.4;
+    }
+
+    .about__cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .about__col {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .about__col-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-accent);
+      margin-bottom: 14px;
+    }
+
+    .about__col h3 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      line-height: 1.25;
+    }
+
+    .about__col p {
+      font-size: 15px;
+      color: var(--color-text-secondary);
+      line-height: 1.75;
+    }
+
+    @media (max-width: 1023px) {
+      .about__stats { grid-template-columns: repeat(2, 1fr); }
+      .about__stat:nth-child(2n) { border-right: none; }
+      .about__stat:nth-child(n+3) { border-top: 1px solid var(--color-border); }
+    }
+
+    @media (max-width: 767px) {
+      .about { padding: var(--section-padding-mobile); }
+      .about__header { margin-bottom: 40px; }
+      .about__stat { padding: 24px 12px; }
+      .about__stat-number { font-size: 34px; }
+      .about__cols { grid-template-columns: 1fr; gap: 16px; }
+      .about__col { padding: 28px 24px; }
     }
 
     /* ─── HOW IT WORKS ──────────────────────────────────────────────────────── */
@@ -2286,52 +2370,52 @@
       <div class="container">
 
         <div class="fleet__header fade-up">
-          <span class="eyebrow">Our Vehicles</span>
-          <h2 id="fleet-heading">Our Modern Fleet</h2>
+          <span class="eyebrow">Our Fleet</span>
+          <h2 id="fleet-heading">16 Vehicles. 8 to 72 Seats. Always the Right Fit.</h2>
         </div>
-        <p class="fleet__sub fade-up">Every vehicle is maintained to the highest standard, fully licensed, and equipped for your comfort.</p>
+        <p class="fleet__sub fade-up">Every vehicle is maintained to the highest standard, fully licensed, and equipped with the comforts your passengers expect.</p>
 
         <div class="fleet__grid">
 
-          <!-- Executive Minibus -->
+          <!-- MTI Coach 72-seat -->
           <article class="fleet-card fade-up">
             <div class="fleet-card__image-wrap">
               <img
                 src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=800&q=80"
-                alt="Executive minibus interior and exterior"
+                alt="MTI full-size coach on the road"
                 loading="lazy"
               />
             </div>
             <div class="fleet-card__body">
-              <p class="fleet-card__type-label">Vehicle Type</p>
-              <h3 class="fleet-card__name">Executive Minibus</h3>
-              <div class="fleet-card__seats" aria-label="8 to 16 seats">8–16</div>
-              <p class="fleet-card__seats-label">Seats</p>
+              <p class="fleet-card__type-label">Full-Size Coach</p>
+              <h3 class="fleet-card__name">MTI Coach</h3>
+              <div class="fleet-card__seats" aria-label="72 seats">72</div>
+              <p class="fleet-card__seats-label">Passengers</p>
               <div class="fleet-card__divider" role="separator"></div>
               <ul class="fleet-card__features" aria-label="Vehicle features">
                 <li class="fleet-card__feature">
                   <span class="fleet-card__check" aria-hidden="true">
                     <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg>
                   </span>
-                  WiFi on board
+                  Reclining seats &amp; luggage hold
                 </li>
                 <li class="fleet-card__feature">
                   <span class="fleet-card__check" aria-hidden="true">
                     <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg>
                   </span>
-                  USB charging points
+                  Onboard Wi-Fi &amp; USB charging
                 </li>
                 <li class="fleet-card__feature">
                   <span class="fleet-card__check" aria-hidden="true">
                     <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg>
                   </span>
-                  Reclining seats
+                  Air conditioning &amp; PA system
                 </li>
                 <li class="fleet-card__feature">
                   <span class="fleet-card__check" aria-hidden="true">
                     <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg>
                   </span>
-                  Air conditioning
+                  CCTV &amp; onboard toilet
                 </li>
               </ul>
               <a href="#quote" class="fleet-card__cta">
@@ -2340,45 +2424,45 @@
             </div>
           </article>
 
-          <!-- Standard Coach -->
+          <!-- Setra Coach 64-seat -->
           <article class="fleet-card fade-up">
             <div class="fleet-card__image-wrap">
               <img
-                src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=800&q=80"
-                alt="Standard coach ready for hire"
+                src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&q=80"
+                alt="Setra luxury coach travelling on motorway"
                 loading="lazy"
               />
             </div>
             <div class="fleet-card__body">
-              <p class="fleet-card__type-label">Vehicle Type</p>
-              <h3 class="fleet-card__name">Standard Coach</h3>
-              <div class="fleet-card__seats" aria-label="24 to 35 seats">24–35</div>
-              <p class="fleet-card__seats-label">Seats</p>
+              <p class="fleet-card__type-label">Executive Coach</p>
+              <h3 class="fleet-card__name">Setra Coach</h3>
+              <div class="fleet-card__seats" aria-label="64 seats">64</div>
+              <p class="fleet-card__seats-label">Passengers</p>
               <div class="fleet-card__divider" role="separator"></div>
               <ul class="fleet-card__features" aria-label="Vehicle features">
                 <li class="fleet-card__feature">
                   <span class="fleet-card__check" aria-hidden="true">
                     <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg>
                   </span>
-                  Onboard toilet
+                  Leather seats &amp; extra legroom
                 </li>
                 <li class="fleet-card__feature">
                   <span class="fleet-card__check" aria-hidden="true">
                     <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg>
                   </span>
-                  PA system
+                  Onboard Wi-Fi &amp; entertainment
                 </li>
                 <li class="fleet-card__feature">
                   <span class="fleet-card__check" aria-hidden="true">
                     <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg>
                   </span>
-                  Luggage hold
+                  Climate control &amp; tinted windows
                 </li>
                 <li class="fleet-card__feature">
                   <span class="fleet-card__check" aria-hidden="true">
                     <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg>
                   </span>
-                  CCTV security
+                  Onboard toilet &amp; large luggage hold
                 </li>
               </ul>
               <a href="#quote" class="fleet-card__cta">
@@ -2387,45 +2471,45 @@
             </div>
           </article>
 
-          <!-- Luxury Coach -->
+          <!-- 16-Seat Minibus -->
           <article class="fleet-card fade-up">
             <div class="fleet-card__image-wrap">
               <img
-                src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=800&q=80"
-                alt="Luxury full-size coach for hire"
+                src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"
+                alt="16-seat minibus for smaller group hire"
                 loading="lazy"
               />
             </div>
             <div class="fleet-card__body">
-              <p class="fleet-card__type-label">Vehicle Type</p>
-              <h3 class="fleet-card__name">Luxury Coach</h3>
-              <div class="fleet-card__seats" aria-label="49 to 57 seats">49–57</div>
-              <p class="fleet-card__seats-label">Seats</p>
+              <p class="fleet-card__type-label">Minibus</p>
+              <h3 class="fleet-card__name">16-Seat Minibus</h3>
+              <div class="fleet-card__seats" aria-label="16 seats">16</div>
+              <p class="fleet-card__seats-label">Passengers</p>
               <div class="fleet-card__divider" role="separator"></div>
               <ul class="fleet-card__features" aria-label="Vehicle features">
                 <li class="fleet-card__feature">
                   <span class="fleet-card__check" aria-hidden="true">
                     <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg>
                   </span>
-                  Leather seats
+                  Ideal for smaller groups &amp; transfers
                 </li>
                 <li class="fleet-card__feature">
                   <span class="fleet-card__check" aria-hidden="true">
                     <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg>
                   </span>
-                  Entertainment screens
+                  USB charging &amp; air conditioning
                 </li>
                 <li class="fleet-card__feature">
                   <span class="fleet-card__check" aria-hidden="true">
                     <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg>
                   </span>
-                  Climate control
+                  Luggage space &amp; reclining seats
                 </li>
                 <li class="fleet-card__feature">
                   <span class="fleet-card__check" aria-hidden="true">
                     <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg>
                   </span>
-                  Refreshment service
+                  Great for airports &amp; corporate use
                 </li>
               </ul>
               <a href="#quote" class="fleet-card__cta">
@@ -2433,6 +2517,111 @@
               </a>
             </div>
           </article>
+
+        </div>
+
+        <!-- View Full Fleet CTA -->
+        <div style="text-align:center;margin-top:48px;" class="fade-up">
+          <a href="#contact" class="hero__cta-link" style="font-size:16px;">
+            View Full Fleet
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         WHY WILLIAM COACHES
+    ═══════════════════════════════════════════════════════════════ -->
+    <section class="why" aria-labelledby="why-heading">
+      <div class="container">
+
+        <div class="why__header">
+          <span class="eyebrow fade-up">Why William Coaches</span>
+          <h2 class="fade-up" id="why-heading">25 Years of Getting Groups There Safely.</h2>
+        </div>
+
+        <div class="why__points">
+
+          <div class="why__point fade-up">
+            <div class="why__point-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <div class="why__point-text">
+              <p class="why__point-title">On-Time, Every Time</p>
+              <p class="why__point-desc">We track every journey and monitor traffic in real time. Punctuality isn't a target — it's our standard.</p>
+            </div>
+          </div>
+
+          <div class="why__point fade-up">
+            <div class="why__point-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+            </div>
+            <div class="why__point-text">
+              <p class="why__point-title">DBS-Checked Drivers</p>
+              <p class="why__point-desc">Every driver holds an enhanced DBS certificate and a full Category D licence. Your passengers are in safe hands.</p>
+            </div>
+          </div>
+
+          <div class="why__point fade-up">
+            <div class="why__point-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <div class="why__point-text">
+              <p class="why__point-title">Fully Licensed &amp; Insured</p>
+              <p class="why__point-desc">All vehicles hold full public liability insurance and comply with UK transport regulations — no exceptions.</p>
+            </div>
+          </div>
+
+          <div class="why__point fade-up">
+            <div class="why__point-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="1" y="3" width="15" height="13" rx="2"/>
+                <path d="M16 8h4l3 3v5h-7V8z"/>
+                <circle cx="5.5" cy="18.5" r="2.5"/>
+                <circle cx="18.5" cy="18.5" r="2.5"/>
+              </svg>
+            </div>
+            <div class="why__point-text">
+              <p class="why__point-title">Modern, Well-Maintained Fleet</p>
+              <p class="why__point-desc">16 vehicles serviced to the highest standard. Clean, comfortable, and reliable — whatever the journey.</p>
+            </div>
+          </div>
+
+          <div class="why__point fade-up">
+            <div class="why__point-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div class="why__point-text">
+              <p class="why__point-title">UK Nationwide Coverage</p>
+              <p class="why__point-desc">Based in London, operating across the whole of the UK — from Edinburgh to Cornwall and everywhere in between.</p>
+            </div>
+          </div>
+
+          <div class="why__point fade-up">
+            <div class="why__point-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.61 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </div>
+            <div class="why__point-text">
+              <p class="why__point-title">24/7 Customer Support</p>
+              <p class="why__point-desc">We're here around the clock. Call us any time before, during, or after your journey — a real person always answers.</p>
+            </div>
+          </div>
 
         </div>
       </div>
@@ -2440,96 +2629,50 @@
 
 
     <!-- ═══════════════════════════════════════════════════════════════
-         WHY CHOOSE US
+         ABOUT SNAPSHOT
     ═══════════════════════════════════════════════════════════════ -->
-    <section class="why" id="about" aria-labelledby="why-heading">
+    <span id="about" aria-hidden="true" style="display:block;height:0;overflow:hidden;"></span>
+    <section class="about" aria-labelledby="about-heading">
       <div class="container">
 
-        <div class="why__header">
-          <span class="eyebrow fade-up">Why William Coaches</span>
-          <h2 class="fade-up" id="why-heading">Trusted by Hundreds Across the UK</h2>
+        <div class="about__header">
+          <span class="eyebrow fade-up">About Us</span>
+          <h2 class="fade-up" id="about-heading">Your Trusted Partner for Coach Hire Since 2002.</h2>
         </div>
 
         <!-- Stats row -->
-        <div class="why__stats fade-up" role="list" aria-label="Company statistics">
-          <div class="why__stat" role="listitem">
-            <span
-              class="why__stat-number"
-              data-count="500"
-              data-suffix="+"
-              aria-label="Over 500 happy clients"
-            >500+</span>
-            <span class="why__stat-label">Happy Clients</span>
+        <div class="about__stats fade-up" role="list" aria-label="Company statistics">
+          <div class="about__stat" role="listitem">
+            <span class="about__stat-number" data-count="16" aria-label="16 vehicles">16</span>
+            <span class="about__stat-label">Vehicles</span>
           </div>
-          <div class="why__stat" role="listitem">
-            <span
-              class="why__stat-number"
-              data-count="10"
-              data-suffix="+"
-              aria-label="Over 10 years experience"
-            >10+</span>
-            <span class="why__stat-label">Years Experience</span>
+          <div class="about__stat" role="listitem">
+            <span class="about__stat-number" data-count="25" data-suffix="+" aria-label="25 plus years">25+</span>
+            <span class="about__stat-label">Years in Operation</span>
           </div>
-          <div class="why__stat" role="listitem">
-            <span
-              class="why__stat-number"
-              data-count="50"
-              data-suffix="+"
-              aria-label="Over 50 vehicles"
-            >50+</span>
-            <span class="why__stat-label">Vehicles in Fleet</span>
+          <div class="about__stat" role="listitem">
+            <span class="about__stat-number" data-count="72" aria-label="72 max seats">72</span>
+            <span class="about__stat-label">Max Seats</span>
           </div>
-          <div class="why__stat" role="listitem">
-            <span
-              class="why__stat-number"
-              data-count="4.9"
-              data-decimals="1"
-              data-suffix="★"
-              aria-label="4.9 star average rating"
-            >4.9★</span>
-            <span class="why__stat-label">Average Rating</span>
+          <div class="about__stat" role="listitem">
+            <span class="about__stat-number" aria-label="Established 2002">2002</span>
+            <span class="about__stat-label">Est.</span>
           </div>
         </div>
 
-        <!-- Trust points -->
-        <div class="why__points">
+        <!-- Vision / Mission -->
+        <div class="about__cols">
 
-          <div class="why__point fade-up">
-            <div class="why__point-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              </svg>
-            </div>
-            <div class="why__point-text">
-              <p class="why__point-title">Fully Licensed &amp; Insured</p>
-              <p class="why__point-desc">All vehicles hold full public liability insurance and comply with UK transport regulations.</p>
-            </div>
+          <div class="about__col fade-up">
+            <p class="about__col-label">Our Vision</p>
+            <h3>The UK's Most Trusted Group Travel Provider</h3>
+            <p>To be the first call for every group journey in Britain — combining punctuality, passenger comfort, and unmatched safety standards on every route we operate, for every client we serve.</p>
           </div>
 
-          <div class="why__point fade-up">
-            <div class="why__point-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                <circle cx="12" cy="7" r="4"/>
-              </svg>
-            </div>
-            <div class="why__point-text">
-              <p class="why__point-title">DBS-Checked Professional Drivers</p>
-              <p class="why__point-desc">Every driver holds an enhanced DBS certificate and a full Category D licence.</p>
-            </div>
-          </div>
-
-          <div class="why__point fade-up">
-            <div class="why__point-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                <circle cx="12" cy="10" r="3"/>
-              </svg>
-            </div>
-            <div class="why__point-text">
-              <p class="why__point-title">Real-Time GPS Tracking</p>
-              <p class="why__point-desc">Monitor your journey live. You'll always know exactly where your coach is.</p>
-            </div>
+          <div class="about__col fade-up">
+            <p class="about__col-label">Our Mission</p>
+            <h3>Getting There Matters as Much as Being There</h3>
+            <p>Since 2002 we've delivered on that promise for schools, corporates, wedding parties, and travellers across the nation. Every vehicle, every driver, every journey — held to the same high standard.</p>
           </div>
 
         </div>

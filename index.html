@@ -833,13 +833,15 @@
 
     .services__header h2 {
       margin-top: 8px;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .services__grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      align-items: start;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
     }
 
     .svc-card {
@@ -847,6 +849,8 @@
       border: 1px solid var(--color-border);
       border-radius: var(--radius-lg);
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
       transition: transform var(--transition), box-shadow var(--transition);
       box-shadow: var(--shadow-card);
     }
@@ -856,13 +860,10 @@
       box-shadow: var(--shadow-card-hover);
     }
 
-    .svc-card--large {
-      grid-column: span 2;
-    }
-
     .svc-card__image-wrap {
-      height: 220px;
+      height: 200px;
       overflow: hidden;
+      flex-shrink: 0;
     }
 
     .svc-card__image-wrap img {
@@ -872,39 +873,38 @@
       transition: transform 0.5s ease;
     }
 
-    .svc-card--large:hover .svc-card__image-wrap img {
+    .svc-card:hover .svc-card__image-wrap img {
       transform: scale(1.04);
     }
 
     .svc-card__body {
-      padding: 28px 32px 32px;
-    }
-
-    .svc-card--small {
-      padding: 32px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
     }
 
     .svc-card__icon {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 48px;
-      height: 48px;
+      width: 44px;
+      height: 44px;
       background: var(--color-accent-soft);
-      border-radius: 14px;
-      margin-bottom: 20px;
+      border-radius: 12px;
+      margin-bottom: 16px;
       flex-shrink: 0;
     }
 
     .svc-card__icon svg {
-      width: 22px;
-      height: 22px;
+      width: 20px;
+      height: 20px;
       color: var(--color-accent);
     }
 
     .svc-card__title {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 600;
       color: var(--color-text-primary);
       margin-bottom: 10px;
@@ -912,12 +912,30 @@
     }
 
     .svc-card__desc {
-      font-size: 15px;
+      font-size: 14px;
       color: var(--color-text-secondary);
       line-height: 1.65;
+      flex: 1;
+      margin-bottom: 20px;
     }
 
-    /* Stagger only while not yet visible — resets automatically on hover after animation */
+    .svc-card__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-accent);
+      margin-top: auto;
+      transition: gap var(--transition), opacity var(--transition);
+    }
+
+    .svc-card__link:hover {
+      gap: 9px;
+      opacity: 0.75;
+    }
+
+    /* Stagger only while not yet visible */
     .services__grid .svc-card:not(.visible):nth-child(1) { transition-delay: 0ms; }
     .services__grid .svc-card:not(.visible):nth-child(2) { transition-delay: 80ms; }
     .services__grid .svc-card:not(.visible):nth-child(3) { transition-delay: 160ms; }
@@ -925,24 +943,16 @@
     .services__grid .svc-card:not(.visible):nth-child(5) { transition-delay: 320ms; }
     .services__grid .svc-card:not(.visible):nth-child(6) { transition-delay: 400ms; }
 
-    @media (max-width: 1023px) {
-      .services__grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .svc-card--large {
-        grid-column: span 2;
-      }
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .services__grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 767px) {
       .services { padding: var(--section-padding-mobile); }
       .services__header { margin-bottom: 40px; }
       .services__grid { grid-template-columns: 1fr; gap: 16px; }
-      .svc-card--large { grid-column: span 1; }
       .svc-card__image-wrap { height: 180px; }
-      .svc-card__body { padding: 24px; }
-      .svc-card--small { padding: 24px; }
-      .svc-card__title { font-size: 18px; }
+      .svc-card__body { padding: 22px; }
     }
 
     /* ─── FLEET ─────────────────────────────────────────────────────────────── */
@@ -2119,105 +2129,149 @@
 
 
     <!-- ═══════════════════════════════════════════════════════════════
-         SERVICES — BENTO GRID
+         SERVICES
     ═══════════════════════════════════════════════════════════════ -->
     <section class="services" id="services" aria-labelledby="services-heading">
       <div class="container">
 
         <div class="services__header">
-          <span class="eyebrow fade-up">What We Offer</span>
-          <h2 class="fade-up" id="services-heading">Every Journey, Covered</h2>
+          <span class="eyebrow fade-up">What We Do</span>
+          <h2 class="fade-up" id="services-heading">Whatever the Occasion, William Coaches Has You Covered.</h2>
         </div>
 
         <div class="services__grid">
 
-          <!-- Large: Airport Transfers -->
-          <article class="svc-card svc-card--large fade-up">
+          <!-- Card 1: Airport Transfers -->
+          <article class="svc-card fade-up">
             <div class="svc-card__image-wrap">
               <img
                 src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=80"
-                alt="Aircraft at airport terminal at sunset"
+                alt="Aircraft at an airport terminal"
                 loading="lazy"
               />
             </div>
             <div class="svc-card__body">
               <div class="svc-card__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21 4 19 4c-2 0-4 0-4 2L11 9.2 2.8 7.4c-.5-.1-.9.1-1.1.5l-.3.6c-.2.4-.1.9.3 1.1l7.1 4.1L7.4 16.1c-.3.3-.3.8 0 1.1l.9.9c.3.3.8.3 1.1 0l3.4-2.4 4.1 7.1c.2.4.7.5 1.1.3l.6-.3c.4-.2.6-.6.5-1.1z"/>
                 </svg>
               </div>
               <h3 class="svc-card__title">Airport Transfers</h3>
-              <p class="svc-card__desc">Punctual, stress-free transfers to all major UK airports. Meet-and-greet service and flight monitoring included as standard.</p>
+              <p class="svc-card__desc">Punctual, stress-free transfers to all major UK airports — Heathrow, Gatwick, Stansted, and beyond. Flight monitoring and meet-and-greet included as standard.</p>
+              <a href="#quote" class="svc-card__link">Get a Quote →</a>
             </div>
           </article>
 
-          <!-- Large: Corporate Travel -->
-          <article class="svc-card svc-card--large fade-up">
+          <!-- Card 2: Long Distance -->
+          <article class="svc-card fade-up">
             <div class="svc-card__image-wrap">
               <img
-                src="https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?w=800&q=80"
-                alt="Corporate business travellers boarding a coach"
+                src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&q=80"
+                alt="Coach travelling on a motorway"
                 loading="lazy"
               />
             </div>
             <div class="svc-card__body">
               <div class="svc-card__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 17h1m16 0h1M5 17H4a1 1 0 0 1-1-1v-4l2-5h10l2 5v4a1 1 0 0 1-1 1h-1"/>
+                  <circle cx="7.5" cy="17" r="2.5"/>
+                  <circle cx="16.5" cy="17" r="2.5"/>
+                  <path d="M10 17h4"/>
+                </svg>
+              </div>
+              <h3 class="svc-card__title">Long Distance Travel</h3>
+              <p class="svc-card__desc">Comfortable long-distance coach hire across the UK and into Europe. Reclining seats, onboard Wi-Fi, and air conditioning keep every passenger at ease.</p>
+              <a href="#quote" class="svc-card__link">Get a Quote →</a>
+            </div>
+          </article>
+
+          <!-- Card 3: Corporate -->
+          <article class="svc-card fade-up">
+            <div class="svc-card__image-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?w=800&q=80"
+                alt="Corporate professionals on a coach"
+                loading="lazy"
+              />
+            </div>
+            <div class="svc-card__body">
+              <div class="svc-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <rect x="2" y="7" width="20" height="14" rx="2"/>
                   <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
                 </svg>
               </div>
               <h3 class="svc-card__title">Corporate Travel</h3>
-              <p class="svc-card__desc">Professional coaches for business events, roadshows, and team away-days. Discreet, reliable, and always on schedule.</p>
+              <p class="svc-card__desc">Premium coaches for business events, roadshows, team away-days, and conference shuttles. Discreet, professional, and always on schedule.</p>
+              <a href="#quote" class="svc-card__link">Get a Quote →</a>
             </div>
           </article>
 
-          <!-- Small: Wedding Transport -->
-          <article class="svc-card svc-card--small fade-up">
-            <div class="svc-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-              </svg>
+          <!-- Card 4: School Trips -->
+          <article class="svc-card fade-up">
+            <div class="svc-card__image-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80"
+                alt="School children boarding a coach"
+                loading="lazy"
+              />
             </div>
-            <h3 class="svc-card__title">Wedding Transport</h3>
-            <p class="svc-card__desc">Elegant coaches for your wedding party and guests. Arrive together, arrive in style — every time.</p>
+            <div class="svc-card__body">
+              <div class="svc-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                  <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                </svg>
+              </div>
+              <h3 class="svc-card__title">School Trips</h3>
+              <p class="svc-card__desc">Safe, fully insured coaches with DBS-checked drivers for every school excursion. We work with schools, colleges, and educational groups across the UK.</p>
+              <a href="#quote" class="svc-card__link">Get a Quote →</a>
+            </div>
           </article>
 
-          <!-- Small: School Trips -->
-          <article class="svc-card svc-card--small fade-up">
-            <div class="svc-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-                <path d="M6 12v5c3 3 9 3 12 0v-5"/>
-              </svg>
+          <!-- Card 5: Wedding Transport -->
+          <article class="svc-card fade-up">
+            <div class="svc-card__image-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80"
+                alt="Decorated wedding venue exterior"
+                loading="lazy"
+              />
             </div>
-            <h3 class="svc-card__title">School Trips</h3>
-            <p class="svc-card__desc">Safe, fully insured coaches with DBS-checked professional drivers for every school excursion.</p>
+            <div class="svc-card__body">
+              <div class="svc-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+              </div>
+              <h3 class="svc-card__title">Wedding Transport</h3>
+              <p class="svc-card__desc">Elegant coaches for your wedding party and guests. Arrive together, arrive in style. We coordinate timing so your special day runs without a hitch.</p>
+              <a href="#quote" class="svc-card__link">Get a Quote →</a>
+            </div>
           </article>
 
-          <!-- Small: Sports & Events -->
-          <article class="svc-card svc-card--small fade-up">
-            <div class="svc-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="8" r="6"/>
-                <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
-              </svg>
+          <!-- Card 6: Guided Tours -->
+          <article class="svc-card fade-up">
+            <div class="svc-card__image-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=80"
+                alt="Scenic road through rolling hills"
+                loading="lazy"
+              />
             </div>
-            <h3 class="svc-card__title">Sports &amp; Events</h3>
-            <p class="svc-card__desc">Group travel to stadiums, concerts, and festivals. No parking headaches — just enjoy the occasion.</p>
-          </article>
-
-          <!-- Small: Day Trips & Tours -->
-          <article class="svc-card svc-card--small fade-up">
-            <div class="svc-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"/>
-                <line x1="2" y1="12" x2="22" y2="12"/>
-                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-              </svg>
+            <div class="svc-card__body">
+              <div class="svc-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="2" y1="12" x2="22" y2="12"/>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                </svg>
+              </div>
+              <h3 class="svc-card__title">Tours &amp; Day Trips</h3>
+              <p class="svc-card__desc">Self-guided or fully organised UK and European day trips and tours. We handle the journey so your group can relax and enjoy every mile of the experience.</p>
+              <a href="#quote" class="svc-card__link">Get a Quote →</a>
             </div>
-            <h3 class="svc-card__title">Day Trips &amp; Tours</h3>
-            <p class="svc-card__desc">Fully guided or self-planned UK day trip packages. We handle the journey — you enjoy the day.</p>
           </article>
 
         </div>

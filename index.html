@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="William Coaches — Premium coach and bus hire service based in London, UK. Corporate travel, weddings, airport transfers, school trips, and group events." />
+  <title>William Coaches — London's Premier Coach Hire Service</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── RESET ─────────────────────────────────────────────────────────────── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    img, picture, video, canvas, svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    input, button, textarea, select {
+      font: inherit;
+    }
+
+    p, h1, h2, h3, h4, h5, h6 {
+      overflow-wrap: break-word;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul, ol {
+      list-style: none;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    /* ─── DESIGN TOKENS ─────────────────────────────────────────────────────── */
+    :root {
+      /* Colours */
+      --color-bg:               #FFFFFF;
+      --color-surface:          #F5F5F7;
+      --color-surface-2:        #FAF8FF;
+      --color-border:           rgba(0, 0, 0, 0.07);
+      --color-text-primary:     #1D1D1F;
+      --color-text-secondary:   #6B7280;
+      --color-text-muted:       #9CA3AF;
+      --color-accent:           #5B21B6;
+      --color-accent-light:     #7C3AED;
+      --color-accent-soft:      #EDE9FE;
+      --color-accent-gradient:  linear-gradient(135deg, #5B21B6, #7C3AED);
+      --color-gold:             #F59E0B;
+
+      /* Radius */
+      --radius-sm:   10px;
+      --radius-md:   16px;
+      --radius-lg:   24px;
+      --radius-pill: 100px;
+
+      /* Shadows */
+      --shadow-card:         0 2px 16px rgba(0, 0, 0, 0.06);
+      --shadow-card-hover:   0 12px 40px rgba(0, 0, 0, 0.10);
+      --shadow-button:       0 4px 14px rgba(91, 33, 182, 0.30);
+      --shadow-button-hover: 0 8px 24px rgba(91, 33, 182, 0.40);
+
+      /* Motion */
+      --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+      /* Spacing (8px base) */
+      --space-xs:  8px;
+      --space-sm:  16px;
+      --space-md:  24px;
+      --space-lg:  48px;
+      --space-xl:  80px;
+      --space-2xl: 120px;
+
+      /* Layout */
+      --max-width:              1120px;
+      --section-padding:        120px 24px;
+      --section-padding-mobile: 72px 20px;
+    }
+
+    /* ─── TYPOGRAPHY SYSTEM ─────────────────────────────────────────────────── */
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.75;
+      color: var(--color-text-primary);
+      background-color: var(--color-bg);
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      color: var(--color-text-primary);
+    }
+
+    h1 {
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+    }
+
+    h2 {
+      font-size: 34px;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    h3 {
+      font-size: 26px;
+      font-weight: 600;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+    }
+
+    h4 {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .text-body-lg {
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.75;
+    }
+
+    .text-body {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.75;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background-color: var(--color-accent-soft);
+      color: var(--color-accent);
+      border-radius: var(--radius-pill);
+      padding: 6px 14px;
+      margin-bottom: 16px;
+    }
+
+    /* Mobile typography overrides */
+    @media (max-width: 767px) {
+      h1 {
+        font-size: 30px;
+        letter-spacing: -0.02em;
+        line-height: 1.15;
+      }
+
+      h2 {
+        font-size: 26px;
+        letter-spacing: -0.015em;
+      }
+
+      h3 {
+        font-size: 22px;
+      }
+
+      h4 {
+        font-size: 18px;
+      }
+
+      body {
+        font-size: 15px;
+      }
+
+      .eyebrow {
+        font-size: 14px;
+        letter-spacing: 0.1em;
+      }
+    }
+
+    /* ─── SHARED LAYOUT HELPERS ─────────────────────────────────────────────── */
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    @media (max-width: 767px) {
+      .container {
+        padding: 0 20px;
+      }
+    }
+
+    /* ─── BUTTONS ────────────────────────────────────────────────────────────── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      height: 48px;
+      padding: 0 28px;
+      background: var(--color-accent-gradient);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: var(--radius-pill);
+      box-shadow: var(--shadow-button);
+      transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        filter var(--transition);
+      white-space: nowrap;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-button-hover);
+      filter: brightness(1.05);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+      box-shadow: var(--shadow-button);
+    }
+
+    .btn-primary:focus-visible {
+      outline: 3px solid rgba(124, 58, 237, 0.45);
+      outline-offset: 3px;
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      height: 48px;
+      padding: 0 28px;
+      background: #fff;
+      color: var(--color-text-primary);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: var(--radius-pill);
+      border: 1px solid #E5E7EB;
+      transition:
+        border-color var(--transition),
+        color var(--transition),
+        transform var(--transition);
+      white-space: nowrap;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--color-accent-light);
+      color: var(--color-accent);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary:focus-visible {
+      outline: 3px solid rgba(124, 58, 237, 0.45);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 767px) {
+      .btn-primary,
+      .btn-secondary {
+        height: 44px;
+        font-size: 14px;
+        padding: 0 22px;
+      }
+    }
+
+    /* ─── SCROLL ANIMATIONS ─────────────────────────────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition:
+        opacity 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── NAVIGATION ─────────────────────────────────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      transition: border-color var(--transition), box-shadow var(--transition);
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav.scrolled {
+      border-bottom-color: rgba(0, 0, 0, 0.06);
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+
+    /* Logo */
+    .nav__logo {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      letter-spacing: -0.02em;
+      flex-shrink: 0;
+    }
+
+    .nav__logo span {
+      color: var(--color-accent);
+    }
+
+    /* Desktop links */
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+
+    .nav__links a {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+      transition: color var(--transition);
+    }
+
+    .nav__links a:hover {
+      color: var(--color-accent);
+    }
+
+    .nav__links a:focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+
+    /* Nav CTA */
+    .nav__cta {
+      flex-shrink: 0;
+    }
+
+    /* Hamburger */
+    .nav__hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 8px;
+      transition: background var(--transition);
+    }
+
+    .nav__hamburger:hover {
+      background: var(--color-surface);
+    }
+
+    .nav__hamburger span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--color-text-primary);
+      border-radius: 2px;
+      transition: transform var(--transition), opacity var(--transition);
+      transform-origin: center;
+    }
+
+    .nav__hamburger.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav__hamburger.open span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    .nav__hamburger.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Mobile drawer */
+    .nav__mobile {
+      display: none;
+      position: fixed;
+      top: 68px;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.97);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--color-border);
+      padding: 20px 24px 32px;
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .nav__mobile.open {
+      max-height: 500px;
+    }
+
+    .nav__mobile a {
+      display: block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--color-text-primary);
+      padding: 13px 0;
+      border-bottom: 1px solid var(--color-border);
+      opacity: 0;
+      transform: translateY(10px);
+      transition:
+        color var(--transition),
+        opacity 0.3s ease,
+        transform 0.3s ease;
+    }
+
+    .nav__mobile a:hover {
+      color: var(--color-accent);
+    }
+
+    .nav__mobile.open a {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .nav__mobile.open a:nth-child(1) { transition-delay: 0.05s; }
+    .nav__mobile.open a:nth-child(2) { transition-delay: 0.10s; }
+    .nav__mobile.open a:nth-child(3) { transition-delay: 0.15s; }
+    .nav__mobile.open a:nth-child(4) { transition-delay: 0.20s; }
+    .nav__mobile.open a:nth-child(5) { transition-delay: 0.25s; }
+
+    .nav__mobile .nav__mobile-cta {
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+      border-bottom: none;
+      padding: 0;
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    .nav__mobile.open .nav__mobile-cta {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.30s;
+    }
+
+    @media (max-width: 1023px) {
+      .nav__links,
+      .nav__cta {
+        display: none;
+      }
+
+      .nav__hamburger {
+        display: flex;
+      }
+
+      .nav__mobile {
+        display: block;
+      }
+    }
+
+    /* ─── HERO ───────────────────────────────────────────────────────────────── */
+    .hero {
+      padding-top: calc(68px + 80px);
+      padding-bottom: 80px;
+      padding-left: 24px;
+      padding-right: 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero__content {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    /* Eyebrow */
+    .hero__eyebrow {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.55s cubic-bezier(0.4, 0, 0.2, 1) 0.1s forwards;
+    }
+
+    /* H1 */
+    .hero__heading {
+      max-width: 700px;
+      margin: 0 auto 24px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.55s cubic-bezier(0.4, 0, 0.2, 1) 0.18s forwards;
+    }
+
+    .hero__heading .gradient-text {
+      background: linear-gradient(135deg, #5B21B6, #A78BFA);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Subheadline */
+    .hero__sub {
+      max-width: 520px;
+      margin: 0 auto 36px;
+      font-size: 18px;
+      color: var(--color-text-secondary);
+      line-height: 1.75;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.55s cubic-bezier(0.4, 0, 0.2, 1) 0.26s forwards;
+    }
+
+    /* CTA row */
+    .hero__ctas {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.55s cubic-bezier(0.4, 0, 0.2, 1) 0.34s forwards;
+    }
+
+    .hero__cta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      transition: gap var(--transition), color var(--transition);
+    }
+
+    .hero__cta-link:hover {
+      gap: 10px;
+      color: var(--color-accent);
+    }
+
+    .hero__cta-link .arrow {
+      transition: transform var(--transition);
+    }
+
+    .hero__cta-link:hover .arrow {
+      transform: translateX(3px);
+    }
+
+    /* Trust signals */
+    .hero__trust {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 56px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.55s cubic-bezier(0.4, 0, 0.2, 1) 0.42s forwards;
+    }
+
+    .hero__trust-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+    }
+
+    .hero__trust-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--color-text-muted);
+      flex-shrink: 0;
+    }
+
+    /* Hero image area */
+    .hero__image-wrap {
+      position: relative;
+      max-width: 960px;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeUp 0.65s cubic-bezier(0.4, 0, 0.2, 1) 0.50s forwards;
+    }
+
+    /* Glow behind image */
+    .hero__image-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -40px -60px -60px;
+      background: radial-gradient(ellipse at 50% 100%, rgba(124, 58, 237, 0.12), transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero__image {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.12);
+      object-fit: cover;
+      aspect-ratio: 16 / 7;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 767px) {
+      .hero {
+        padding-top: calc(68px + 56px);
+        padding-bottom: 56px;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .hero__sub {
+        font-size: 16px;
+      }
+
+      .hero__ctas {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+      }
+
+      .hero__ctas .btn-primary,
+      .hero__ctas .btn-secondary {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .hero__cta-link {
+        justify-content: center;
+      }
+
+      .hero__trust {
+        gap: 12px;
+        margin-bottom: 40px;
+      }
+
+      .hero__trust-dot {
+        display: none;
+      }
+
+      .hero__image {
+        aspect-ratio: 4 / 3;
+        border-radius: 14px;
+      }
+    }
+
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .hero {
+        padding-top: calc(68px + 72px);
+        padding-bottom: 72px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════════════════════════════ -->
+  <header class="nav" id="nav" role="banner">
+    <div class="container nav__inner">
+
+      <!-- Logo -->
+      <a href="#" class="nav__logo" aria-label="William Coaches — home">
+        William <span>Coaches</span>
+      </a>
+
+      <!-- Desktop nav links -->
+      <nav class="nav__links" aria-label="Main navigation">
+        <a href="#services">Services</a>
+        <a href="#fleet">Fleet</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <!-- Desktop CTA -->
+      <div class="nav__cta">
+        <a href="#quote" class="btn-primary">Get a Quote</a>
+      </div>
+
+      <!-- Hamburger -->
+      <button
+        class="nav__hamburger"
+        id="hamburger"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobileMenu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="nav__mobile" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+      <a href="#services">Services</a>
+      <a href="#fleet">Fleet</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="#quote" class="nav__mobile-cta">
+        <span class="btn-primary" style="width:100%;justify-content:center;">Get a Quote</span>
+      </a>
+    </div>
+  </header>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════════════════════════ -->
+  <main>
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero__content">
+
+        <!-- Eyebrow chip -->
+        <div class="hero__eyebrow">
+          <span class="eyebrow">London's Premier Coach Hire Service</span>
+        </div>
+
+        <!-- H1 -->
+        <h1 class="hero__heading" id="hero-heading">
+          Travel in Comfort,<br>
+          <span class="gradient-text">Arrive in Style</span>
+        </h1>
+
+        <!-- Subheadline -->
+        <p class="hero__sub">
+          Luxury coach hire for corporate travel, weddings, airport transfers, and group events across London and the UK.
+        </p>
+
+        <!-- CTAs -->
+        <div class="hero__ctas">
+          <a href="#quote" class="btn-primary">Get a Free Quote</a>
+          <a href="#fleet" class="hero__cta-link">
+            View Our Fleet
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <!-- Trust signals -->
+        <div class="hero__trust" role="list" aria-label="Trust signals">
+          <div class="hero__trust-item" role="listitem">
+            <span aria-hidden="true">⭐</span>
+            <span>4.9/5 Rating</span>
+          </div>
+          <div class="hero__trust-dot" aria-hidden="true"></div>
+          <div class="hero__trust-item" role="listitem">
+            <span>500+ Trips Monthly</span>
+          </div>
+          <div class="hero__trust-dot" aria-hidden="true"></div>
+          <div class="hero__trust-item" role="listitem">
+            <span>Available 24/7</span>
+          </div>
+        </div>
+
+        <!-- Hero image -->
+        <div class="hero__image-wrap">
+          <img
+            class="hero__image"
+            src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1400&q=80"
+            alt="A luxury William Coaches coach on the road, ready for hire"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       JAVASCRIPT
+  ═══════════════════════════════════════════════════════════════ -->
+  <script>
+    // ── Nav: scroll border ───────────────────────────────────────
+    const nav = document.getElementById('nav');
+    const onScroll = () => {
+      nav.classList.toggle('scrolled', window.scrollY > 10);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // ── Mobile nav toggle ────────────────────────────────────────
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', String(isOpen));
+      hamburger.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    // Close mobile menu when a link is clicked
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        hamburger.setAttribute('aria-label', 'Open navigation menu');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+      if (!nav.contains(e.target) && mobileMenu.classList.contains('open')) {
+        mobileMenu.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // ── Scroll animations (IntersectionObserver) ─────────────────
+    const fadeEls = document.querySelectorAll('.fade-up');
+    if (fadeEls.length > 0) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+      fadeEls.forEach(el => observer.observe(el));
+    }
+  </script>
+
+</body>
+</html>
